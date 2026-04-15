@@ -22,8 +22,22 @@ function pulse_mag_add_editorial_roles(): void
         'publish_posts' => true,
         'moderate_comments' => true,
         'upload_files' => true,
+        // Required for Custom HTML/code blocks in the block editor.
+        'unfiltered_html' => true,
     ]);
 }
+
+/**
+ * Keep custom editorial role caps aligned even on existing installs.
+ */
+function pulse_mag_sync_editorial_role_caps(): void
+{
+    $editor = get_role('pulse_editor');
+    if ($editor instanceof \WP_Role && !$editor->has_cap('unfiltered_html')) {
+        $editor->add_cap('unfiltered_html');
+    }
+}
+add_action('init', 'pulse_mag_sync_editorial_role_caps', 11);
 
 function pulse_mag_require_review_for_publish(array $data, array $postarr): array
 {
