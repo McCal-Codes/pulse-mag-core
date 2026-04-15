@@ -32,9 +32,19 @@ function pulse_mag_add_editorial_roles(): void
  */
 function pulse_mag_sync_editorial_role_caps(): void
 {
+    $author = get_role('pulse_author');
+    if ($author instanceof \WP_Role && !$author->has_cap('upload_files')) {
+        $author->add_cap('upload_files');
+    }
+
     $editor = get_role('pulse_editor');
-    if ($editor instanceof \WP_Role && !$editor->has_cap('unfiltered_html')) {
-        $editor->add_cap('unfiltered_html');
+    if ($editor instanceof \WP_Role) {
+        if (!$editor->has_cap('upload_files')) {
+            $editor->add_cap('upload_files');
+        }
+        if (!$editor->has_cap('unfiltered_html')) {
+            $editor->add_cap('unfiltered_html');
+        }
     }
 }
 add_action('init', 'pulse_mag_sync_editorial_role_caps', 11);
