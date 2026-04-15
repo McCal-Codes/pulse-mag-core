@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## 0.1.5 - 2026-04-15
+
+- Added `author_profile` custom meta fields for role, pronouns, and "looking for" editorial preferences.
+- Added Author Profile admin meta box fields and save handlers so staff metadata can be managed in the dashboard.
+- Added `[pulse_author_meta]` shortcode support for rendering author metadata in block templates.
+
 ## 0.1.4 - 2026-04-15
 
 - Strengthened role capability sync so existing editorial roles reliably keep media upload and advanced editing capabilities after updates.

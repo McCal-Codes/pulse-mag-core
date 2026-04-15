@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Pulse Mag Core
  * Description: Core content model and editorial workflow defaults for Pulse Magazine.
- * Version: 0.1.4
+ * Version: 0.1.5
  * Requires at least: 6.5
  * Requires PHP: 8.1
  * Author: Pulse Magazine
